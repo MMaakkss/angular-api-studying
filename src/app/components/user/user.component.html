@@ -1,14 +1,56 @@
 <div class="user">
-  <img class="image" [src]="userData.picture.large" [alt]="userData.name.last">
-  <div class="name">
+  <img class="user__image" [src]="userData.picture.large" [alt]="userData.name.last">
+  <div class="user__name">
     {{ userData.name.first }}
     {{ userData.name.last }}
   </div>
-  <div class="gender">{{ userData.gender }}</div>
-  <div class="email">{{ userData.email }}</div>
-  <div class="location">
-    {{ userData.location.country }}
-    {{ userData.location.city }}
+
+  <ul class="user__info-list">
+    <li>
+      <span>Gender:</span>
+      {{ userData.gender | titlecase }}
+    </li>
+    <li>
+      <span>Email:</span>
+      {{ userData.email }}
+    </li>
+    <li>
+      <span>Country:</span>
+      {{ userData.location.country }}
+    </li>
+    <li>
+      <span>City:</span>
+      {{ userData.location.city }}
+    </li>
+  </ul>
+
+  <div class="weather">
+    <div class="weather__title">
+      Weather
+      <img class="icon" src="/assets/images/{{ getWeatherIcon }}.svg" alt="weather icon">
+    </div>
+    <div class="weather__info">
+      <ul>
+        <li>
+          <span>Temperature:</span>
+          {{ weather?.current_weather?.temperature }}
+        </li>
+        <li>
+          <span>Highest temperature:</span>
+          {{ getHighestTemp }}
+        </li>
+        <li>
+          <span>Lowest temperature:</span>
+          {{ getLowestTemp }}
+        </li>
+      </ul>
+    </div>
   </div>
-  <button class="button" (click)="saveUser()">Save</button>
+  <button
+    class="user__button"
+    (click)="saveUser()"
+    *ngIf="showSaveButton"
+  >
+    Save
+  </button>
 </div>

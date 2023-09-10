@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <app-user
+    class="user-wrap"
+    *ngFor="let user of users"
+    [userData]="user"
+    [showSaveButton]="false"
+  />
+  <div class="notification" *ngIf="!users.length">
+    There are no saved users yet!
+  </div>
+</div>

@@ -14,13 +14,16 @@ export interface IUser {
   picture: {
     large: string;
   };
+  id: {
+    value: string;
+  }
   location: {
     city: string;
     country: string;
     state: string;
     coordinates: {
-      latitude: string,
-      longitude: string,
-    }
+      latitude: string;
+      longitude: string;
+    };
   };
 }
